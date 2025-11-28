@@ -1,0 +1,127 @@
+-- ========================================
+-- BANCO DE DADOS: AthleteManager
+-- ========================================
+
+CREATE DATABASE IF NOT EXISTS AthleteManager;
+USE AthleteManager;
+
+-- ========================================
+-- 1. Tabela: atletas
+-- ========================================
+
+CREATE TABLE atletas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(120) NOT NULL,
+    idade INT,
+    peso DECIMAL(5,2),
+    altura DECIMAL(4,2),
+    modalidade VARCHAR(60),
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ========================================
+-- 2. Tabela: treinos
+-- ========================================
+
+CREATE TABLE treinos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atleta_id INT NOT NULL,
+    tipo VARCHAR(60) NOT NULL,
+    data DATE NOT NULL,
+    duração_min INT,
+    intensidade VARCHAR(30),
+    descricao TEXT,
+    
+    FOREIGN KEY (atleta_id) REFERENCES atletas(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- ========================================
+-- 3. Tabela: evolucao_fisica
+-- ========================================
+
+CREATE TABLE evolucao_fisica (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atleta_id INT NOT NULL,
+    data DATE NOT NULL,
+    peso DECIMAL(5,2),
+    gordura_percent DECIMAL(5,2),
+    massa_magra DECIMAL(5,2),
+    desempenho_geral INT,
+    
+    FOREIGN KEY (atleta_id) REFERENCES atletas(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- ========================================
+-- 4. Tabela: avaliacoes_fisicas
+-- ========================================
+
+CREATE TABLE avaliacoes_fisicas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atleta_id INT NOT NULL,
+    data DATE NOT NULL,
+    salto_vertical_cm INT,
+    sprint_10m_seg DECIMAL(5,2),
+    sprint_40m_seg DECIMAL(5,2),
+    força_superior INT,
+    força_inferior INT,
+    mobilidade INT,
+    observacoes TEXT,
+    
+    FOREIGN KEY (atleta_id) REFERENCES atletas(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- ========================================
+-- 5. Tabela: competicoes
+-- ========================================
+
+CREATE TABLE competicoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atleta_id INT NOT NULL,
+    nome_evento VARCHAR(120) NOT NULL,
+    modalidade VARCHAR(60),
+    data DATE,
+    resultado VARCHAR(120),
+    
+    FOREIGN KEY (atleta_id) REFERENCES atletas(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- ========================================
+-- 6. Tabela: metas
+-- ========================================
+
+CREATE TABLE metas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atleta_id INT NOT NULL,
+    titulo VARCHAR(120) NOT NULL,
+    descricao TEXT,
+    prazo DATE,
+    status VARCHAR(30) DEFAULT 'pendente',
+    
+    FOREIGN KEY (atleta_id) REFERENCES atletas(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- ========================================
+-- 7. Tabela: notificacoes (opcional)
+-- ========================================
+
+CREATE TABLE notificacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atleta_id INT NOT NULL,
+    mensagem TEXT NOT NULL,
+    data DATETIME DEFAULT CURRENT_TIMESTAMP,
+    lida BOOLEAN DEFAULT FALSE,
+    
+    FOREIGN KEY (atleta_id) REFERENCES atletas(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
