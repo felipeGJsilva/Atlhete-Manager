@@ -7,27 +7,25 @@
     <title>{% block title %}AthleteManager{% endblock %}</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
 
-    <!-- Tema do projeto -->
-    <link rel="stylesheet" href="/static/css/theme.css">
-
-    {% block head %}{% endblock %}
 </head>
-<body>
+<body class="bg-dark text-light">
 
-<nav class="navbar navbar-expand-lg" style="background: #1F34A6;">
+<nav class="navbar navbar-expand-lg" style="background:#1F34A6;">
     <div class="container-fluid">
-        <a class="navbar-brand text-light fw-bold" href="/">AthleteManager</a>
+        <a class="navbar-brand text-white fw-bold" href="/">AthleteManager</a>
     </div>
 </nav>
 
 <div class="container py-4">
     {% block content %}
+    <h3>Bem-vindo ao AthleteManager</h3>
     {% endblock %}
 </div>
 
-<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 {% block scripts %}{% endblock %}
 
 </body>
