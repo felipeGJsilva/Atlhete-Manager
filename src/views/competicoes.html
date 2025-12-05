@@ -1,0 +1,76 @@
+<!-- Template base superior -->
+
+<h2 class="mb-4">Competições</h2>
+
+<div class="card p-3 mb-4">
+    <h4 class="card-title">Registrar Competição</h4>
+
+    <form>
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <label class="form-label">Nome da Competição</label>
+                <input id="compNome" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Data</label>
+                <input id="compData" type="date" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Local</label>
+                <input id="compLocal" class="form-control">
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="button" onclick="salvarCompeticao()">Salvar</button>
+    </form>
+</div>
+
+<div class="card p-3">
+    <h4 class="card-title">Lista de Competições</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Local</th>
+            </tr>
+        </thead>
+        <tbody id="listaComp"></tbody>
+    </table>
+</div>
+
+<script>
+function salvarCompeticao() {
+    let nome = document.getElementById("compNome").value;
+    let data = document.getElementById("compData").value;
+    let local = document.getElementById("compLocal").value;
+
+    let lista = carregarLocal("comp");
+    lista.push({ nome, data, local });
+
+    salvarLocal("comp", lista);
+    carregarCompeticoes();
+}
+
+function carregarCompeticoes() {
+    let lista = carregarLocal("comp");
+    let tbody = document.getElementById("listaComp");
+    tbody.innerHTML = "";
+
+    lista.forEach(c => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${c.nome}</td>
+                <td>${c.data}</td>
+                <td>${c.local}</td>
+            </tr>`;
+    });
+}
+
+carregarCompeticoes();
+</script>
+
+<!-- Template base inferior -->

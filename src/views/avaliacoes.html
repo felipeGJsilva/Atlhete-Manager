@@ -1,0 +1,75 @@
+<!-- Template base superior -->
+
+<h2 class="mb-4">Avaliações Físicas</h2>
+
+<div class="card p-3 mb-4">
+    <h4 class="card-title">Adicionar Avaliação</h4>
+    <form>
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <label class="form-label">Atleta</label>
+                <input id="avalAtleta" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Tipo de Avaliação</label>
+                <input id="avalTipo" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Resultado</label>
+                <input id="avalResultado" class="form-control">
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="button" onclick="salvarAvaliacao()">Salvar</button>
+    </form>
+</div>
+
+<div class="card p-3">
+    <h4 class="card-title">Histórico</h4>
+    <table class="table table-striped mt-2">
+        <thead>
+            <tr>
+                <th>Atleta</th>
+                <th>Tipo</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody id="listaAvaliacoes"></tbody>
+    </table>
+</div>
+
+<script>
+function salvarAvaliacao() {
+    let atleta = document.getElementById("avalAtleta").value;
+    let tipo = document.getElementById("avalTipo").value;
+    let res = document.getElementById("avalResultado").value;
+
+    let lista = carregarLocal("avaliacoes");
+    lista.push({ atleta, tipo, res });
+
+    salvarLocal("avaliacoes", lista);
+    carregarAvaliacoes();
+}
+
+function carregarAvaliacoes() {
+    let lista = carregarLocal("avaliacoes");
+    let tbody = document.getElementById("listaAvaliacoes");
+    tbody.innerHTML = "";
+
+    lista.forEach(a => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${a.atleta}</td>
+                <td>${a.tipo}</td>
+                <td>${a.res}</td>
+            </tr>`;
+    });
+}
+
+carregarAvaliacoes();
+</script>
+
+<!-- Template base inferior -->
