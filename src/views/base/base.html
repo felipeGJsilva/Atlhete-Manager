@@ -1,32 +1,150 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthleteManager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}AthleteManager{% endblock %}</title>
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
-
+    <!-- CSS do projeto -->
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<body class="bg-dark text-light">
 
-<nav class="navbar navbar-expand-lg" style="background:#1F34A6;">
+<body class="bg-light">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <div class="container-fluid">
-        <a class="navbar-brand text-white fw-bold" href="/">AthleteManager</a>
+        <a class="navbar-brand fw-bold" href="#">
+            🏋 AthleteManager
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadPage('atletas')">
+                        Atletas
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadPage('treinos')">
+                        Treinos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadPage('evolucao')">
+                        Evolução Física
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadPage('avaliacoes')">
+                        Avaliações
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadPage('competicoes')">
+                        Competições
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="loadPage('metas')">
+                        Metas
+                    </a>
+                </li>
+
+            </ul>
+        </div>
     </div>
 </nav>
 
-<div class="container py-4">
-    {% block content %}
-    <h3>Bem-vindo ao AthleteManager</h3>
-    {% endblock %}
-</div>
+<!-- ================= CONTEÚDO ================= -->
+<main class="container my-4">
+    <div id="conteudo" class="bg-white p-4 rounded shadow-sm">
 
-<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-{% block scripts %}{% endblock %}
+        <!-- Tela inicial -->
+        <h2>Bem-vindo ao AthleteManager</h2>
+        <p class="text-muted">
+            Sistema de gestão de atletas, treinos, avaliações e evolução física.
+        </p>
+
+        <hr>
+
+        <div class="row text-center mt-4">
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Atletas</h5>
+                        <p class="card-text">
+                            Cadastro e gerenciamento dos atletas.
+                        </p>
+                        <button class="btn btn-primary" onclick="loadPage('atletas')">
+                            Acessar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Treinos</h5>
+                        <p class="card-text">
+                            Registro de treinos e intensidade.
+                        </p>
+                        <button class="btn btn-primary" onclick="loadPage('treinos')">
+                            Acessar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Evolução</h5>
+                        <p class="card-text">
+                            Acompanhamento da evolução física.
+                        </p>
+                        <button class="btn btn-primary" onclick="loadPage('evolucao')">
+                            Acessar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-dark text-light text-center py-3 mt-auto">
+    <small>
+        © 2025 - AthleteManager |
+        Projeto educacional
+    </small>
+</footer>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="../static/js/main.js"></script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
 
 </body>
 </html>
