@@ -7,33 +7,47 @@
     --black: #0D0D0D;
 
     --text-light: #f5f5f5;
-    --text-muted: #c7c7c7;
+    --text-muted: #bdbdbd;
+    --text-soft: #e6e6e6;
+
     --bg-dark: #0D0D0D;
-    --bg-card: #141414;
+    --bg-card: #161616;
+    --bg-panel: #111111;
 }
 
+/* ===== BASE ===== */
 body {
     background: linear-gradient(180deg, #0D0D0D, #141414);
     font-family: "Segoe UI", sans-serif;
     color: var(--text-light);
     min-height: 100vh;
+
+    /* 🔥 ESSENCIAL */
+    display: flex;
+    flex-direction: column;
+}
+
+/* garante contraste em textos soltos */
+p, span, li {
+    color: var(--text-soft);
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
-    background: linear-gradient(90deg, var(--black), var(--brown-dark));
+    background: linear-gradient(90deg, #0D0D0D, #1a0f02);
     border-bottom: 3px solid var(--gold);
 }
 
 .navbar-brand {
     color: var(--gold) !important;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
 }
 
 .nav-link {
     color: var(--text-light) !important;
-    margin-left: 10px;
+    margin-left: 12px;
+    font-weight: 500;
 }
 
 .nav-link:hover,
@@ -41,95 +55,113 @@ body {
     color: var(--gold) !important;
 }
 
-/* ===== HERO ===== */
+/* ===== ÁREA PRINCIPAL ===== */
+main {
+    flex: 1;
+}
+
+/* ===== HERO / PRIMEIRA TELA ===== */
 .hero {
     background: linear-gradient(
-        120deg,
-        rgba(13,13,13,0.95),
-        rgba(64,36,1,0.9)
+        135deg,
+        rgba(15,15,15,0.98),
+        rgba(64,36,1,0.92)
     );
-    border-radius: 20px;
-    padding: 60px 40px;
-    box-shadow: 0 0 40px rgba(217,143,7,0.15);
+    border-radius: 22px;
+    padding: 70px 45px;
+    box-shadow: 0 0 45px rgba(217,143,7,0.25);
 }
 
 .hero h1 {
     color: var(--gold);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 2px;
+    margin-bottom: 15px;
 }
 
 .hero p {
-    color: var(--text-muted);
-    max-width: 600px;
+    color: var(--text-light);
+    max-width: 650px;
+    font-size: 1.05rem;
 }
 
 /* ===== CARDS ===== */
 .card {
-    background: var(--bg-card);
-    border: 1px solid rgba(217,143,7,0.2);
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: linear-gradient(160deg, #141414, #1f1f1f);
+    border: 1px solid rgba(217,143,7,0.4);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.65);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 40px rgba(217,143,7,0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 18px 45px rgba(217,143,7,0.35);
 }
 
 .card-title {
     color: var(--gold);
-    font-weight: 600;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
 }
 
 /* ===== BOTÕES ===== */
 .btn-gold {
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: var(--black);
+    color: #0D0D0D;
     border: none;
-    font-weight: 600;
-    border-radius: 12px;
-    padding: 10px 18px;
+    font-weight: 700;
+    border-radius: 14px;
+    padding: 10px 22px;
+    box-shadow: 0 4px 12px rgba(217,143,7,0.4);
 }
 
 .btn-gold:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.15);
 }
 
 .btn-outline-gold {
-    border: 1px solid var(--gold);
+    border: 1.5px solid var(--gold);
     color: var(--gold);
     background: transparent;
-    border-radius: 12px;
+    border-radius: 14px;
+    font-weight: 600;
 }
 
 .btn-outline-gold:hover {
     background: var(--gold);
-    color: var(--black);
+    color: #0D0D0D;
 }
 
-/* ===== TABLE ===== */
+/* ===== TABELAS ===== */
 .table {
     color: var(--text-light);
 }
 
 .table th {
     color: var(--gold);
-    border-color: rgba(217,143,7,0.3);
+    border-color: rgba(217,143,7,0.4);
+    font-weight: 700;
 }
 
 .table td {
-    border-color: rgba(255,255,255,0.1);
+    color: var(--text-soft);
+    border-color: rgba(255,255,255,0.12);
 }
 
 /* ===== FOOTER ===== */
 footer {
-    margin-top: 60px;
-    padding: 15px;
+    margin-top: auto;
+    padding: 18px;
     text-align: center;
-    background: var(--black);
+    background: linear-gradient(90deg, #0D0D0D, #1a1a1a);
     color: var(--text-muted);
     border-top: 2px solid var(--gold);
+    font-size: 0.85rem;
 }
