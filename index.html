@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body>
 
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg">
@@ -20,16 +20,24 @@
         <a class="navbar-brand" href="index.html">ATHLETEMANAGER</a>
 
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="atletas.html">Atletas</a></li>
-            <li class="nav-item"><a class="nav-link" href="treinos.html">Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="avaliacoes.html">Avaliações</a></li>
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="atletas.html">Atletas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="treinos.html">Treinos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="avaliacoes.html">Avaliações</a>
+            </li>
         </ul>
     </div>
 </nav>
 
 <!-- ================= CONTEÚDO ================= -->
-<main class="container my-5 flex-grow-1">
+<main class="container my-5">
 
     <!-- HERO -->
     <section class="hero mb-5">
@@ -41,12 +49,16 @@
         </p>
 
         <div class="mt-4">
-            <a href="atletas.html" class="btn btn-gold me-2">Gerenciar Atletas</a>
-            <a href="treinos.html" class="btn btn-outline-gold">Ver Treinos</a>
+            <a href="atletas.html" class="btn btn-gold me-2">
+                Gerenciar Atletas
+            </a>
+            <a href="treinos.html" class="btn btn-outline-gold">
+                Ver Treinos
+            </a>
         </div>
     </section>
 
-    <!-- ================= STATUS ================= -->
+    <!-- CARDS DE STATUS -->
     <section class="row g-4 mb-5">
 
         <div class="col-md-4">
@@ -72,12 +84,12 @@
 
     </section>
 
-    <!-- ================= MÓDULOS ================= -->
+    <!-- CARDS DE MÓDULOS -->
     <section class="row g-4">
 
         <!-- ATLETAS -->
         <div class="col-md-4">
-            <div class="card h-100 d-flex flex-column">
+            <div class="card h-100">
                 <h4 class="card-title">Atletas</h4>
                 <p>
                     Cadastro completo de atletas, com dados pessoais,
@@ -91,7 +103,7 @@
 
         <!-- TREINOS -->
         <div class="col-md-4">
-            <div class="card h-100 d-flex flex-column">
+            <div class="card h-100">
                 <h4 class="card-title">Treinos</h4>
                 <p>
                     Registro e planejamento de treinos, controle de carga,
@@ -105,7 +117,7 @@
 
         <!-- EVOLUÇÃO -->
         <div class="col-md-4">
-            <div class="card h-100 d-flex flex-column">
+            <div class="card h-100">
                 <h4 class="card-title">Evolução</h4>
                 <p>
                     Acompanhamento da evolução física do atleta com histórico
@@ -119,7 +131,7 @@
 
         <!-- AVALIAÇÕES -->
         <div class="col-md-4">
-            <div class="card h-100 d-flex flex-column">
+            <div class="card h-100">
                 <h4 class="card-title">Avaliações</h4>
                 <p>
                     Avaliações físicas e testes de desempenho para análise
@@ -133,7 +145,7 @@
 
         <!-- COMPETIÇÕES -->
         <div class="col-md-4">
-            <div class="card h-100 d-flex flex-column">
+            <div class="card h-100">
                 <h4 class="card-title">Competições</h4>
                 <p>
                     Registro de competições, eventos esportivos, resultados
@@ -147,7 +159,7 @@
 
         <!-- METAS -->
         <div class="col-md-4">
-            <div class="card h-100 d-flex flex-column">
+            <div class="card h-100">
                 <h4 class="card-title">Metas</h4>
                 <p>
                     Definição e acompanhamento de metas físicas, técnicas
