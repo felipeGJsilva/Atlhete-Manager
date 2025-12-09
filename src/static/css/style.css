@@ -1,18 +1,11 @@
 :root {
-    /* PALETA THROTTLE */
     --gold: #D98F07;
     --gold-dark: #A65D05;
-    --brown: #734002;
-    --brown-dark: #402401;
     --black: #0D0D0D;
 
     --text-light: #f5f5f5;
     --text-muted: #bdbdbd;
     --text-soft: #e6e6e6;
-
-    --bg-dark: #0D0D0D;
-    --bg-card: #161616;
-    --bg-panel: #111111;
 }
 
 /* ===== BASE ===== */
@@ -20,16 +13,8 @@ body {
     background: linear-gradient(180deg, #0D0D0D, #141414);
     font-family: "Segoe UI", sans-serif;
     color: var(--text-light);
+    margin: 0;
     min-height: 100vh;
-
-    /* 🔥 ESSENCIAL */
-    display: flex;
-    flex-direction: column;
-}
-
-/* garante contraste em textos soltos */
-p, span, li {
-    color: var(--text-soft);
 }
 
 /* ===== NAVBAR ===== */
@@ -41,13 +26,12 @@ p, span, li {
 .navbar-brand {
     color: var(--gold) !important;
     font-weight: 800;
-    letter-spacing: 1.2px;
+    letter-spacing: 1px;
 }
 
 .nav-link {
     color: var(--text-light) !important;
-    margin-left: 12px;
-    font-weight: 500;
+    margin-left: 14px;
 }
 
 .nav-link:hover,
@@ -55,81 +39,75 @@ p, span, li {
     color: var(--gold) !important;
 }
 
-/* ===== ÁREA PRINCIPAL ===== */
-main {
-    flex: 1;
+/* ===== DASHBOARD ===== */
+.dashboard {
+    background: transparent;
 }
 
-/* ===== HERO / PRIMEIRA TELA ===== */
+/* ===== HERO ===== */
 .hero {
     background: linear-gradient(
         135deg,
-        rgba(15,15,15,0.98),
-        rgba(64,36,1,0.92)
+        rgba(15,15,15,0.95),
+        rgba(64,36,1,0.9)
     );
-    border-radius: 22px;
-    padding: 70px 45px;
-    box-shadow: 0 0 45px rgba(217,143,7,0.25);
+    border-radius: 20px;
+    padding: 40px 35px;
+    box-shadow: 0 0 35px rgba(217,143,7,0.3);
 }
 
 .hero h1 {
     color: var(--gold);
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
+    font-weight: 800;
 }
 
 .hero p {
-    color: var(--text-light);
-    max-width: 650px;
-    font-size: 1.05rem;
+    max-width: 700px;
+    color: var(--text-soft);
+    margin-top: 10px;
 }
 
-/* ===== CARDS ===== */
-.card {
+/* ===== GRID DE CARDS ===== */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* ===== CARD ===== */
+.dash-card {
     background: linear-gradient(160deg, #141414, #1f1f1f);
     border: 1px solid rgba(217,143,7,0.4);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.65);
+    border-radius: 18px;
+    padding: 28px;
+    min-height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card:hover {
+.dash-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 18px 45px rgba(217,143,7,0.35);
 }
 
-.card-title {
+.dash-card h4 {
     color: var(--gold);
     font-weight: 700;
-    margin-bottom: 10px;
 }
 
-.card p {
+.dash-card p {
     color: var(--text-soft);
     font-size: 0.95rem;
 }
 
 /* ===== BOTÕES ===== */
-.btn-gold {
-    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: #0D0D0D;
-    border: none;
-    font-weight: 700;
-    border-radius: 14px;
-    padding: 10px 22px;
-    box-shadow: 0 4px 12px rgba(217,143,7,0.4);
-}
-
-.btn-gold:hover {
-    filter: brightness(1.15);
-}
-
 .btn-outline-gold {
     border: 1.5px solid var(--gold);
     color: var(--gold);
-    background: transparent;
     border-radius: 14px;
     font-weight: 600;
 }
@@ -139,26 +117,10 @@ main {
     color: #0D0D0D;
 }
 
-/* ===== TABELAS ===== */
-.table {
-    color: var(--text-light);
-}
-
-.table th {
-    color: var(--gold);
-    border-color: rgba(217,143,7,0.4);
-    font-weight: 700;
-}
-
-.table td {
-    color: var(--text-soft);
-    border-color: rgba(255,255,255,0.12);
-}
-
 /* ===== FOOTER ===== */
 footer {
-    margin-top: auto;
-    padding: 18px;
+    margin-top: 60px;
+    padding: 16px;
     text-align: center;
     background: linear-gradient(90deg, #0D0D0D, #1a1a1a);
     color: var(--text-muted);
