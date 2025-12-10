@@ -1,123 +1,133 @@
-# AthleteManager
+# 🏋️ AthleteManager
 
-AthleteManager é um sistema web voltado ao **gerenciamento, acompanhamento e análise de atletas**, permitindo o registro estruturado de dados pessoais, esportivos e físicos, além do monitoramento contínuo da evolução de desempenho ao longo do tempo.
+**AthleteManager** é um sistema em desenvolvimento para **gerenciamento e acompanhamento de atletas**, com foco na organização de informações pessoais, esportivas e físicas, além da visualização da evolução de desempenho ao longo do tempo.
 
-O projeto foi concebido com foco em **organização, escalabilidade e clareza técnica**, possibilitando evolução gradual do front-end para uma aplicação completa integrada a uma API REST e banco de dados persistente.
-
----
-
-## Objetivo do Sistema
-
-Centralizar informações de atletas em um único ambiente, oferecendo:
-- Controle estruturado de dados individuais
-- Histórico de evolução física
-- Facilidade de manutenção e expansão
-- Base sólida para análises futuras de desempenho
+Atualmente, o projeto encontra-se na **fase de prototipação do front-end**, servindo como base visual e estrutural para as próximas etapas de desenvolvimento.
 
 ---
 
-## Estado Atual do Projeto
+## 🎯 Objetivo do Projeto
 
-O projeto encontra-se na fase de **prototipação do front-end**, com definição clara de:
-- Estrutura de telas
-- Padrão visual
-- Organização de arquivos
-- Modelagem de dados
-- Planejamento de endpoints da API
+Criar uma aplicação capaz de:
 
-A camada de backend será integrada em etapas posteriores.
+- 📋 Cadastrar e visualizar atletas
+- 🏃 Organizar dados esportivos e físicos
+- 📈 Acompanhar evolução corporal e de desempenho
+- 🔌 Servir como base para integração futura com API e banco de dados
 
 ---
 
-## Funcionalidades
+## 🚦 Estado Atual do Projeto
 
-### Implementadas
-- Dashboard inicial
-- Página de atletas (protótipo)
-- Layout baseado em cards
-- Tema visual consistente
-- Estrutura modular de arquivos
-- Base de scripts JavaScript
-- Design responsivo
+✅ Prototipação do **Front-end**  
+✅ Estrutura visual definida  
+✅ Identidade visual padronizada  
+✅ Layout responsivo  
 
-### Planejadas
-- Cadastro completo de atletas
-- Tela de detalhes do atleta
-- Modal para edição de dados
-- Upload de foto do atleta
-- Registro de evolução física (peso, IMC, força)
+🚧 **Ainda não implementado**
+- Backend
 - API REST
-- Persistência em banco de dados
-- Autenticação e controle de acesso
+- Banco de dados
+- Persistência real de dados
+- Autenticação
 
 ---
 
-## Estrutura do Projeto
-Athlete-Manager/
-│
-├── index.html # Tela principal / dashboard
-├── atleta.html # Protótipo da tela de atletas
-│
-├── css/
-│ └── style.css # Estilos globais do sistema
-│
-├── js/
-│ └── main.js # Script base (estrutura inicial)
-│
-└── README.md
+## 🧩 Funcionalidades Atuais (Protótipo)
+
+- 🖥️ Dashboard inicial
+- 🧑‍🤝‍🧑 Tela de atletas (layout base)
+- 🧱 Cards informativos
+- 📄 Estrutura preparada para:
+  - Nome do atleta
+  - Esporte
+  - Posição
+  - Peso
+  - Altura
+  - Foto do atleta
+- 🎨 Estilo visual consistente
+- 📱 Layout responsivo
+
+---
+
+## 🚀 Funcionalidades Planejadas
+
+- 🧑‍💼 Cadastro completo de atletas
+- 🔍 Tela de detalhes do atleta
+- ✏️ Modal de edição de dados
+- 📷 Upload real de foto
+- 📊 Registro de evolução física:
+  - Peso
+  - IMC
+  - Força
+- 🗂️ Histórico de dados
+- 🌐 API REST
+- 🗄️ Banco de dados
+- 🔐 Sistema de autenticação
+
+---
+
+## 📁 Estrutura Atual do Projeto
 
 
 ---
 
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 ### Front-end
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- Bootstrap 5
+- ✅ HTML5
+- ✅ CSS3
+- ✅ JavaScript (Vanilla)
+- ✅ Bootstrap 5
 
-### Planejamento de Back-end
-- Python (Flask ou FastAPI)
+---
+
+## 🎨 Padrão Visual
+
+O sistema utiliza:
+
+- 🌑 Tema escuro
+- 🟡 Paleta baseada em dourado e preto
+- 🧱 Cards para organização das informações
+- 📐 Uso de grid e espaçamento consistente
+- 🖥️ Interface preparada para dados dinâmicos
+
+---
+
+## 🏗️ Arquitetura Planejada (Futura)
+
+Embora ainda não implementada, a arquitetura prevista inclui:
+
+- Backend desacoplado
 - API REST
-- Banco de dados relacional (PostgreSQL ou SQLite)
-- Sistema de upload de arquivos
-- Autenticação baseada em tokens
+- Integração com banco de dados
+- Consumo da API pelo front-end
+- Possibilidade de aplicação mobile
 
 ---
 
-## Modelo de Dados
+## 🗺️ Roadmap
 
-O sistema é baseado nas seguintes entidades principais:
-- **Athletes**: dados pessoais e esportivos
-- **Physical Evolution**: histórico de métricas físicas
-
-A modelagem foi pensada para manter histórico, integridade de dados e permitir fácil expansão.
-
----
-
-## Documentação Técnica
-
-A documentação técnica detalhada está disponível na pasta `/docs`:
-
-- **database.md** — Estrutura e relacionamentos do banco de dados
-- **api_endpoints.md** — Definição dos endpoints REST planejados
-
-Esses documentos representam o estado atual do planejamento técnico do sistema.
+1. ✅ Finalização do protótipo visual
+2. 🔄 Implementação da navegação funcional
+3. 🔌 Criação da API REST
+4. 🗄️ Integração com banco de dados
+5. 📷 Upload de imagens
+6. 📊 Evolução física e relatórios
+7. 🔐 Autenticação e segurança
 
 ---
 
-## Roadmap (Alto Nível)
+## ℹ️ Observações
 
-1. Finalização do front-end
-2. Implementação da API REST
-3. Persistência de dados
-4. Upload de imagens
-5. Evolução física e relatórios
-6. Autenticação e segurança
+Este repositório representa a **base inicial do AthleteManager**.  
+A estrutura foi projetada para facilitar evolução contínua, organização e boas práticas desde as primeiras etapas.
 
 ---
 
-## Licença
+## 📜 Licença
 
-Este projeto está licenciado sob a licença MIT.
+MIT License
+
+> A estrutura abaixo reflete **exatamente** o estado atual do repositório:
+
