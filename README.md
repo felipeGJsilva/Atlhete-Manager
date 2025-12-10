@@ -1,177 +1,262 @@
+Perfeito 👍
+Abaixo estão **DOIS ARQUIVOS DE DOCUMENTAÇÃO**, prontos para **copiar e colar exatamente** no seu repositório GitHub, **usando apenas o que o projeto já tem hoje** (estrutura inicial + protótipos).
+Nada de coisas inventadas ou finais.
 
 ---
 
-# 🏋️‍♂️ AthleteManager — Sistema de Gestão de Atletas Amadores
+## 📄 docs/database.md
 
-Gerencie treinos, evolução física, metas, competições e avaliações de atletas de qualquer modalidade.
+```md
+# 📊 Documentação do Banco de Dados – AthleteManager
 
----
+Este documento descreve a **estrutura planejada do banco de dados** do projeto AthleteManager, com base no que já foi definido até o momento no desenvolvimento do sistema.
 
-## 📌 Descrição do Projeto
-
-O **AthleteManager** é um sistema criado para facilitar a vida de atletas amadores e treinadores.
-Ele permite registrar treinos, acompanhar evolução física, armazenar avaliações detalhadas, definir metas e controlar competições.
-Serve para qualquer esporte: rugby, futebol, corrida, vôlei e muitos outros.
-
-O foco do sistema é ser simples, organizado e oferecer informações úteis para evolução esportiva.
+Atualmente, o banco de dados ainda **não está totalmente implementado**, sendo utilizado apenas como referência futura. O foco atual do projeto está na criação dos **protótipos de telas e estrutura do front-end**.
 
 ---
 
-## 🎯 Funcionalidades Principais
+## 🗄️ Banco de Dados
 
-### ✔️ Gestão de Atletas
-
-* Cadastro de atletas com idade, altura, peso e modalidade.
-* Histórico completo e atualizado.
-
-### ✔️ Registro de Treinos
-
-* Tipos de treino: força, resistência, sprint, técnico etc.
-* Intensidade, duração e observações gerais.
-
-### ✔️ Evolução Física
-
-* Pesagens e medições ao longo do tempo.
-* Percentual de gordura.
-* Massa magra estimada.
-* Nota geral de desempenho.
-
-### ✔️ Avaliações Físicas
-
-* Salto vertical.
-* Sprint 10m e 40m.
-* Força superior e inferior.
-* Mobilidade.
-* Observações do avaliador.
-
-### ✔️ Competições
-
-* Registro de eventos disputados.
-* Resultados, tempos, pontos e estatísticas.
-
-### ✔️ Metas Esportivas
-
-* Criação de metas com prazo.
-* Status: pendente, em andamento ou concluída.
-
-### ✔️ Notificações (opcional)
-
-* Alertas de treinos, metas e avaliações.
+- Tipo planejado: **SQLite**
+- Arquivo: `banco.db`
+- Linguagem backend: **Python**
+- Framework: **Flask**
 
 ---
 
-## 🧱 Estrutura do Banco de Dados
+## 👤 Tabela: Atletas
 
-### **Tabelas**
+Armazena as informações principais dos atletas cadastrados no sistema.
 
-* **atletas**
-* **treinos**
-* **evolucao_fisica**
-* **avaliacoes_fisicas**
-* **competicoes**
-* **metas**
-* **notificacoes** (opcional)
-
-### **Relações**
-
-* 1 atleta → vários treinos
-* 1 atleta → várias evoluções
-* 1 atleta → várias avaliações
-* 1 atleta → várias metas
-* 1 atleta → várias competições
+| Campo        | Tipo      | Descrição |
+|--------------|----------|-----------|
+| id           | INTEGER  | Identificador único do atleta |
+| nome         | TEXT     | Nome completo do atleta |
+| esporte      | TEXT     | Modalidade esportiva praticada |
+| posicao      | TEXT     | Posição ou função no esporte |
+| altura       | REAL     | Altura do atleta (em metros) |
+| peso         | REAL     | Peso atual do atleta (em kg) |
+| foto         | TEXT     | Caminho ou nome do arquivo da foto |
+| observacoes  | TEXT     | Informações adicionais |
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🏋️‍♂️ Tabela: Treinos (planejada)
 
-* Backend: Python (Flask/FastAPI/Django) ou Node.js
-* Banco: SQLite / MySQL / PostgreSQL
-* Frontend: HTML, CSS, JS, Bootstrap
-* Ferramentas: Git, GitHub, VS Code
+Relaciona os treinos realizados ou planejados para cada atleta.
+
+| Campo      | Tipo     | Descrição |
+|------------|---------|-----------|
+| id         | INTEGER | Identificador do treino |
+| atleta_id | INTEGER | Atleta relacionado |
+| tipo       | TEXT    | Tipo de treino |
+| descricao | TEXT    | Descrição do treino |
+| data       | DATE    | Data do treino |
 
 ---
 
-## 📁 Estrutura de Pastas (Exemplo)
+## 📈 Tabela: Avaliações Físicas (planejada)
 
-```
-AthleteManager/
-│
-├── src/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   └── utils/
-│
-├── docs/
-│   ├── database.md
-│   └── api_endpoints.md
-│
-├── tests/
-│
-├── README.md
-└── requirements.txt
+Registra avaliações ao longo do tempo para acompanhamento da evolução.
+
+| Campo      | Tipo     | Descrição |
+|------------|---------|-----------|
+| id         | INTEGER | Identificador da avaliação |
+| atleta_id | INTEGER | Atleta avaliado |
+| peso       | REAL    | Peso registrado |
+| imc        | REAL    | Índice de Massa Corporal |
+| forca      | TEXT    | Avaliação de força |
+| data       | DATE    | Data da avaliação |
+
+---
+
+## 🏆 Tabela: Competições (planejada)
+
+Armazena informações sobre competições participadas.
+
+| Campo      | Tipo     | Descrição |
+|------------|---------|-----------|
+| id         | INTEGER | Identificador da competição |
+| nome       | TEXT    | Nome da competição |
+| local      | TEXT    | Local do evento |
+| data       | DATE    | Data da competição |
+
+---
+
+## 🎯 Tabela: Metas (planejada)
+
+Utilizada para definir e acompanhar metas do atleta.
+
+| Campo      | Tipo     | Descrição |
+|------------|---------|-----------|
+| id         | INTEGER | Identificador da meta |
+| atleta_id | INTEGER | Atleta associado |
+| descricao | TEXT    | Objetivo da meta |
+| status     | TEXT    | Situação da meta |
+
+---
+
+## ℹ️ Observações
+
+- Todas as tabelas estão **em fase de planejamento**
+- Nenhuma delas está totalmente implementada no backend
+- A estrutura poderá sofrer ajustes conforme o avanço do projeto
 ```
 
 ---
 
-## 🚀 Como Rodar o Projeto (Exemplo com Python + Flask)
+## 📄 docs/api_endpoints.md
 
-```bash
-git clone https://github.com/seu-usuario/AthleteManager.git
-cd AthleteManager
+````md
+# 🌐 Documentação dos Endpoints da API – AthleteManager
 
-python -m venv venv
+Este documento descreve os **endpoints planejados da API** do projeto AthleteManager, com base na estrutura atual do projeto.
 
-venv\Scripts\activate   # Windows
-source venv/bin/activate   # Linux/Mac
+No estágio atual, a API **ainda não está funcional**, sendo esta documentação uma referência inicial para a implementação futura.
 
-pip install -r requirements.txt
+---
 
-python app.py
+## 📌 Padrão da API
+
+- Base URL: `/`
+- Formato de dados: JSON
+- Backend: Flask (Python)
+
+---
+
+## 👤 Atletas
+
+### GET /atletas
+Retorna uma lista de atletas.
+
+**Status atual:**  
+❌ Não implementado (planejado)
+
+---
+
+### GET /atletas/<id>
+Retorna os dados de um atleta específico.
+
+**Status atual:**  
+❌ Não implementado (planejado)
+
+---
+
+### POST /atletas
+Cadastra um novo atleta.
+
+**Dados esperados (JSON):**
+```json
+{
+  "nome": "Nome do atleta",
+  "esporte": "Esporte",
+  "posicao": "Posição",
+  "altura": 1.80,
+  "peso": 80
+}
+````
+
+**Status atual:**
+❌ Não implementado
+
+---
+
+### PUT /atletas/<id>
+
+Atualiza os dados de um atleta.
+
+**Status atual:**
+❌ Não implementado
+
+---
+
+### DELETE /atletas/<id>
+
+Remove um atleta do sistema.
+
+**Status atual:**
+❌ Não implementado
+
+---
+
+## 🏋️ Treinos
+
+### GET /treinos
+
+Lista os treinos cadastrados.
+
+**Status atual:**
+❌ Planejado
+
+---
+
+### POST /treinos
+
+Cadastra um novo treino.
+
+**Status atual:**
+❌ Planejado
+
+---
+
+## 📈 Avaliações
+
+### GET /avaliacoes
+
+Retorna avaliações físicas dos atletas.
+
+**Status atual:**
+❌ Planejado
+
+---
+
+### POST /avaliacoes
+
+Registra uma nova avaliação física.
+
+**Status atual:**
+❌ Planejado
+
+---
+
+## 🏆 Competições
+
+### GET /competicoes
+
+Lista competições.
+
+**Status atual:**
+❌ Planejado
+
+---
+
+## 🎯 Metas
+
+### GET /metas
+
+Lista metas dos atletas.
+
+**Status atual:**
+❌ Planejado
+
+---
+
+## ⚠️ Observações Gerais
+
+* A API ainda **não está integrada ao front-end**
+* Os endpoints descritos servem como **guia de desenvolvimento**
+* A implementação será feita após a conclusão dos protótipos de tela
+
 ```
 
-Acesse o sistema em:
+---
 
+✅ **Esses arquivos já estão no nível certo para entrega escolar/acadêmica**  
+✅ Coerentes com o estado atual do projeto  
+✅ Sem prometer coisas que ainda não existem  
+
+Se quiser, depois eu:
+- Atualizo esses docs para a **versão final**
+- Alinho com o código real da API
+- Padronizo tudo para apresentação/avaliação
 ```
-http://localhost:5000
-```
-
----
-
-## 🧪 Testes
-
-```bash
-pytest
-```
-
----
-
-## 📌 Roadmap Futuro
-
-* [ ] Exportar relatórios em PDF
-* [ ] Dashboard com gráficos
-* [ ] Múltiplos atletas por treinador
-* [ ] Aplicativo mobile
-* [ ] Integração com smartwatch
-
----
-
-## 🤝 Contribuição
-
-1. Faça um fork
-2. Crie uma branch
-3. Faça o commit
-4. Abra um Pull Request
-
----
-
-## 📄 Licença
-
-Licença MIT — livre para modificar e distribuir.
-
----
-
-## 🙋 Sobre o Projeto
-
-Criado para ajudar atletas amadores a manterem organização e evolução constante.
-Se quiser expandir o projeto, posso ajudar criando layout, diagramas, endpoints ou telas.
