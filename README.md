@@ -54,3 +54,76 @@ A camada de backend será integrada em etapas posteriores.
 
 ## Estrutura do Projeto
 
+Athlete-Manager/
+│
+├── index.html # Dashboard principal
+├── atleta.html # Tela de atletas (protótipo)
+│
+├── assets/
+│ ├── css/
+│ │ └── style.css # Estilos globais
+│ ├── js/
+│ │ └── main.js # Scripts base (estrutura inicial)
+│ └── images/
+│
+├── docs/
+│ ├── database.md # Modelagem e documentação do banco de dados
+│ └── api_endpoints.md # Especificação dos endpoints da API
+│
+└── README.md
+
+
+---
+
+## Tecnologias Utilizadas
+
+### Front-end
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Bootstrap 5
+
+### Planejamento de Back-end
+- Python (Flask ou FastAPI)
+- API REST
+- Banco de dados relacional (PostgreSQL ou SQLite)
+- Sistema de upload de arquivos
+- Autenticação baseada em tokens
+
+---
+
+## Modelo de Dados
+
+O sistema é baseado nas seguintes entidades principais:
+- **Athletes**: dados pessoais e esportivos
+- **Physical Evolution**: histórico de métricas físicas
+
+A modelagem foi pensada para manter histórico, integridade de dados e permitir fácil expansão.
+
+---
+
+## Documentação Técnica
+
+A documentação técnica detalhada está disponível na pasta `/docs`:
+
+- **database.md** — Estrutura e relacionamentos do banco de dados
+- **api_endpoints.md** — Definição dos endpoints REST planejados
+
+Esses documentos representam o estado atual do planejamento técnico do sistema.
+
+---
+
+## Roadmap (Alto Nível)
+
+1. Finalização do front-end
+2. Implementação da API REST
+3. Persistência de dados
+4. Upload de imagens
+5. Evolução física e relatórios
+6. Autenticação e segurança
+
+---
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT.
