@@ -53,22 +53,16 @@ A camada de backend será integrada em etapas posteriores.
 ---
 
 ## Estrutura do Projeto
-
 Athlete-Manager/
 │
-├── index.html # Dashboard principal
-├── atleta.html # Tela de atletas (protótipo)
+├── index.html # Tela principal / dashboard
+├── atleta.html # Protótipo da tela de atletas
 │
-├── assets/
-│ ├── css/
-│ │ └── style.css # Estilos globais
-│ ├── js/
-│ │ └── main.js # Scripts base (estrutura inicial)
-│ └── images/
+├── css/
+│ └── style.css # Estilos globais do sistema
 │
-├── docs/
-│ ├── database.md # Modelagem e documentação do banco de dados
-│ └── api_endpoints.md # Especificação dos endpoints da API
+├── js/
+│ └── main.js # Script base (estrutura inicial)
 │
 └── README.md
 
