@@ -1,36 +1,9 @@
 // ======================
-// INICIALIZAÇÃO DO BANCO
+// INICIALIZAÇÃO
 // ======================
-let db;
-const request = indexedDB.open("AthleteManager", 1);
-
-request.onupgradeneeded = e => {
-    db = e.target.result;
-
-    const stores = [
-        "atletas",
-        "treinos",
-        "evolucao",
-        "avaliacoes",
-        "competicoes",
-        "metas"
-    ];
-
-    stores.forEach(nome => {
-        if (!db.objectStoreNames.contains(nome)) {
-            db.createObjectStore(nome, {
-                keyPath: "id",
-                autoIncrement: true
-            });
-        }
-    });
-};
-
-
-request.onsuccess = e => {
-    db = e.target.result;
+document.addEventListener('DOMContentLoaded', () => {
     carregarAtletas();
-};
+});
 
 // ======================
 // FUNÇÃO ADICIONAR
@@ -46,20 +19,26 @@ document.getElementById("formAddAtleta").onsubmit = async e => {
         nome: form.nome.value,
         esporte: form.esporte.value,
         posicao: form.posicao.value,
-        idade: form.idade.value,
-        altura: form.altura.value,
-        peso: form.peso.value,
+        idade: parseInt(form.idade.value),
+        altura: parseFloat(form.altura.value),
+        peso: parseFloat(form.peso.value),
         foto: foto || "default"
     };
 
-    const tx = db.transaction("atletas", "readwrite");
-    tx.objectStore("atletas").add(atleta);
-
-    tx.oncomplete = () => {
-        form.reset();
-        carregarAtletas();
-        bootstrap.Modal.getInstance(document.getElementById("modalAddAtleta")).hide();
-    };
+    try {
+        const response = await fetch('/api/atletas', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(atleta)
+        });
+        if (response.ok) {
+            form.reset();
+            carregarAtletas();
+            bootstrap.Modal.getInstance(document.getElementById("modalAddAtleta")).hide();
+        }
+    } catch (error) {
+        console.error('Erro ao adicionar atleta:', error);
+    }
 };
 
 // ======================
@@ -73,42 +52,41 @@ document.getElementById("formEditAtleta").onsubmit = async e => {
     let fotoConvertida = novaFoto ? await carregarImagem(novaFoto) : null;
 
     const atleta = {
-        id: Number(form.id.value),
         nome: form.nome.value,
         esporte: form.esporte.value,
         posicao: form.posicao.value,
-        idade: form.idade.value,
-        altura: form.altura.value,
-        peso: form.peso.value,
+        idade: parseInt(form.idade.value),
+        altura: parseFloat(form.altura.value),
+        peso: parseFloat(form.peso.value),
         foto: fotoConvertida || form.getAttribute("data-foto-original")
     };
 
-    const tx = db.transaction("atletas", "readwrite");
-    tx.objectStore("atletas").put(atleta);
+    const id = form.id.value;
 
-    tx.oncomplete = () => {
-        carregarAtletas();
-        bootstrap.Modal.getInstance(document.getElementById("modalEditAtleta")).hide();
-    };
+    try {
+        const response = await fetch(`/api/atletas/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(atleta)
+        });
+        if (response.ok) {
+            carregarAtletas();
+            bootstrap.Modal.getInstance(document.getElementById("modalEditAtleta")).hide();
+        }
+    } catch (error) {
+        console.error('Erro ao editar atleta:', error);
+    }
 };
 
 // ======================
 // CARREGAR ATLETAS
 // ======================
-function carregarAtletas() {
-    const lista = document.getElementById("lista-atletas");
-    lista.innerHTML = "";
-
-    const tx = db.transaction("atletas", "readonly");
-    const store = tx.objectStore("atletas");
-
-    store.openCursor().onsuccess = e => {
-        const cursor = e.target.result;
-        if (!cursor) return;
-
-        const a = cursor.value;
-
-        lista.innerHTML += `
+async function carregarAtletas() {
+    try {
+        const response = await fetch('/api/atletas');
+        const atletas = await response.json();
+        const lista = document.getElementById("lista-atletas");
+        lista.innerHTML = atletas.map(a => `
             <div class="dash-card">
                 <img src="${a.foto === "default" ? "../../static/img/default-user.png" : a.foto}" class="atleta-foto">
                 <div class="atleta-info">
@@ -125,10 +103,10 @@ function carregarAtletas() {
                     </div>
                 </div>
             </div>
-        `;
-
-        cursor.continue();
-    };
+        `).join('');
+    } catch (error) {
+        console.error('Erro ao carregar atletas:', error);
+    }
 }
 
 // ======================
@@ -144,10 +122,10 @@ async function carregarImagem(file) {
     });
 }
 
-function editarAtleta(id) {
-    const tx = db.transaction("atletas", "readonly");
-    tx.objectStore("atletas").get(id).onsuccess = e => {
-        const a = e.target.result;
+async function editarAtleta(id) {
+    try {
+        const response = await fetch(`/api/atletas/${id}`);
+        const a = await response.json();
         const form = document.getElementById("formEditAtleta");
 
         form.id.value = a.id;
@@ -161,14 +139,20 @@ function editarAtleta(id) {
         form.setAttribute("data-foto-original", a.foto);
 
         new bootstrap.Modal(document.getElementById("modalEditAtleta")).show();
-    };
+    } catch (error) {
+        console.error('Erro ao carregar atleta para edição:', error);
+    }
 }
 
-function excluirAtleta(id) {
+async function excluirAtleta(id) {
     if (!confirm("Tem certeza que deseja excluir?")) return;
 
-    const tx = db.transaction("atletas", "readwrite");
-    tx.objectStore("atletas").delete(id);
-
-    tx.oncomplete = () => carregarAtletas();
+    try {
+        const response = await fetch(`/api/atletas/${id}`, { method: 'DELETE' });
+        if (response.ok) {
+            carregarAtletas();
+        }
+    } catch (error) {
+        console.error('Erro ao excluir atleta:', error);
+    }
 }
